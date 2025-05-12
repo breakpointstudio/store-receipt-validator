@@ -17,6 +17,9 @@ abstract class AbstractResponse
     const PURCHASE_STATE_CANCELED = 1;
     const ACKNOWLEDGEMENT_STATE_YET_TO_BE = 0;
     const ACKNOWLEDGEMENT_STATE_DONE = 1;
+    const PAYMENT_STATE_PENDING = 0;
+    const PAYMENT_STATE_RECEIVED = 1;
+    const PAYMENT_STATE_DEFERRED = 2;
 
     /**
      * @var ProductPurchase|SubscriptionPurchase|SubscriptionPurchaseV2
