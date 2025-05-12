@@ -27,7 +27,7 @@ class PurchaseItem implements ArrayAccess
      *
      * @var string|null
      */
-    protected ?string $web_order_line_item_id;
+    protected ?string $web_order_line_item_id = null;
 
     /**
      * transaction_id.
@@ -69,21 +69,21 @@ class PurchaseItem implements ArrayAccess
      *
      * @var Carbon|null
      */
-    protected ?Carbon $cancellation_date;
+    protected ?Carbon $cancellation_date = null;
 
     /**
      * For a subscription, whether it is in the free trial period.
      *
      * @var bool|null
      */
-    protected ?bool $is_trial_period;
+    protected ?bool $is_trial_period = null;
 
     /**
      * For an auto-renewable subscription, whether it is in the introductory price period.
      *
      * @var bool|null
      */
-    protected ?bool $is_in_intro_offer_period;
+    protected ?bool $is_in_intro_offer_period = null;
 
     /**
      * For family shared IAPs this is true when the purchase was originated by someone else.
@@ -97,14 +97,14 @@ class PurchaseItem implements ArrayAccess
      *
      * @var string|null
      */
-    protected ?string $promotional_offer_id;
+    protected ?string $promotional_offer_id = null;
 
     /**
      * purchase item info.
      *
      * @var array|null
      */
-    protected ?array $raw_data;
+    protected ?array $raw_data = null;
 
     /**
      * PurchaseItem constructor.
