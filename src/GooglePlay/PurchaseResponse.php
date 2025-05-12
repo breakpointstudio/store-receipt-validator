@@ -2,6 +2,7 @@
 
 namespace ReceiptValidator\GooglePlay;
 
+use Carbon\Carbon;
 use Google\Service\AndroidPublisher\ProductPurchase;
 
 /**
@@ -38,6 +39,20 @@ class PurchaseResponse extends AbstractResponse
     public function getPurchaseTimeMillis(): string
     {
         return $this->response->purchaseTimeMillis;
+    }
+
+    /**
+     * @return Carbon|null
+     */
+    public function getPurchaseTimeDate(): ?Carbon
+    {
+        if (null !== $this->response->purchaseTimeMillis) {
+            return Carbon::createFromTimestampUTC(
+                (int) round((int) $this->response->purchaseTimeMillis / 1000)
+            );
+        }
+
+        return null;
     }
 
     public function getDeveloperPayload(): array|string

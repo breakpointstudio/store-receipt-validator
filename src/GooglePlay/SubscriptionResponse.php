@@ -2,6 +2,7 @@
 
 namespace ReceiptValidator\GooglePlay;
 
+use Carbon\Carbon;
 use Google\Service\AndroidPublisher\SubscriptionPurchase;
 
 /**
@@ -63,6 +64,20 @@ class SubscriptionResponse extends AbstractResponse
     }
 
     /**
+     * @return Carbon|null
+     */
+    public function getStartDate(): ?Carbon
+    {
+        if (null !== $this->response->getStartTimeMillis()) {
+            return Carbon::createFromTimestampUTC(
+                (int) round((int) $this->response->getStartTimeMillis() / 1000)
+            );
+        }
+
+        return null;
+    }
+
+    /**
      * @return int
      */
     public function getExpiryTimeMillis(): int
@@ -71,11 +86,39 @@ class SubscriptionResponse extends AbstractResponse
     }
 
     /**
+     * @return Carbon|null
+     */
+    public function getExpiryDate(): ?Carbon
+    {
+        if (null !== $this->response->getExpiryTimeMillis()) {
+            return Carbon::createFromTimestampUTC(
+                (int) round((int) $this->response->getExpiryTimeMillis() / 1000)
+            );
+        }
+
+        return null;
+    }
+
+    /**
      * @return int|null
      */
     public function getUserCancellationTimeMillis(): ?int
     {
         return $this->response->getUserCancellationTimeMillis();
+    }
+    
+    /**
+     * @return Carbon|null
+     */
+    public function getCancellationDate(): ?Carbon
+    {
+        if (null !== $this->response->getUserCancellationTimeMillis()) {
+            return Carbon::createFromTimestampUTC(
+                (int) round((int) $this->response->getUserCancellationTimeMillis() / 1000)
+            );
+        }
+
+        return null;
     }
 
     /**
