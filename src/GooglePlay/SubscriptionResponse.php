@@ -122,9 +122,9 @@ class SubscriptionResponse extends AbstractResponse
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPaymentState(): int
+    public function getPaymentState(): ?int
     {
         return $this->response->getPaymentState();
     }
