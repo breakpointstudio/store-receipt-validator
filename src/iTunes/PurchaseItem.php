@@ -62,7 +62,7 @@ class PurchaseItem implements ArrayAccess
      *
      * @var Carbon
      */
-    protected Carbon $expires_date;
+    protected ?Carbon $expires_date = null;
 
     /**
      * cancellation_date.
